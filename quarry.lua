@@ -145,6 +145,9 @@ local function main()
 	end
 end
 
-print("Starting " .. sProcessname)
+local start_time = os.time()
+print("Starting " .. sProcessname .. " at " .. textutils.formatTime(start_time, false))
 main()
-print("Ending " .. sProcessname)
+local end_time = os.time()
+print("Ending " .. sProcessname .. " at " .. textutils.formatTime(end_time, false))
+print(sProcessname .. " took " .. (end_time - start_time))
