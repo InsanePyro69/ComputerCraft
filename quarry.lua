@@ -1,4 +1,5 @@
 -- ComputerCraft script for a mining turtle to quarry areas
+-- Usage: quarry <num> <int> <int>
 
 local sProcessname = "Mining Process"
 local iFuelSlot = 16
