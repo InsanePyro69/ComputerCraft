@@ -1,15 +1,18 @@
 -- ComputerCraft script to simple process items
 
-local function find_item_slot()
+local function find_item_slot(name)
 	for slot = 1, 16 do
-		if turtle.getItemDetail(slot) then
-			return slot
+		local item = turtle.getItemDetail(slot)
+		if item then
+            if not name or item.name == name then
+                return slot
+            end
 		end
-	end
+    end
 end
 
-local function process()
-	local slot = find_item_slot()
+local function process(name)
+	local slot = find_item_slot(name)
 	if not slot then
 		print("No item found")
 		return true
@@ -26,11 +29,13 @@ end
 
 print("Starting simple process")
 
+local itemname = turtle.getItemDetail(find_item_slot()).name
+
 local i = 0
 repeat
     print("Iteration: " .. i)
 	i = i + 1
-	local exit = process()
+	local exit = process(itemname)
 until exit
 
 print("Ending simple process")
